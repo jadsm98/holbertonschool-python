@@ -15,7 +15,7 @@ def is_smaller(roman1, roman2):
         return True
     return False
 
-    
+
 def roman_to_int(roman_string):
     if not isinstance(roman_string, str) or roman_string is None:
         return 0
@@ -28,6 +28,5 @@ def roman_to_int(roman_string):
                 total -= roman_dict[val]
         else:
             total += roman_dict[val]
-        
+
     return total
-    
