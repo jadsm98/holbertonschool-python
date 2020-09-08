@@ -2,4 +2,5 @@
 def best_score(a_dictionary):
     if a_dictionary == None:
         return None
-    return max(i for i, pair in a_dictionary.items())
+    sorted_dict = sorted (a_dictionary.keys())
+    return sorted_dict[-1]
