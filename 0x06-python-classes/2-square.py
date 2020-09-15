@@ -1,5 +1,9 @@
 #!/usr/bin/python3
+"""square2"""
+
+
 class Square:
+    """validation"""
     def __init__(self, size=0):
         self.__size = size
         if not type(size) is int:
