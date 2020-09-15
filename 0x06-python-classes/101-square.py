@@ -11,7 +11,7 @@ class Square:
 
     def __str__(self):
         """to print"""
-        return str(self.my_print())
+        return self.my_print()
 
     @property
     def size(self):
@@ -48,13 +48,15 @@ class Square:
 
     def my_print(self):
         """prints square"""
+        result = ""
         if self.__size == 0:
-            print()
+            result += "\n"
         else:
-            for i in range(self.__position[1]):
-                print('')
-            for i in range(self.__size):
-                print(' '*self.__position[0], end='')
-                for j in range(self.__size):
-                    print('#', end='')
-                print()
+            result += '\n'*self.__position[1]
+            result += ' '*self.__position[0]
+            result += '#'*self.__size
+            for i in range(self.__size - 1):
+                result += '\n'
+                result += ' '*self.__position[0]
+                result += '#'*self.__size
+        return result
