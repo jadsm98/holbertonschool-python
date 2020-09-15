@@ -52,5 +52,8 @@ class SinglyLinkedList:
     def __str__(self):
         result = ""
         for node in self.nodes:
-            result += str(node.data) + "\n"
+            result += str(node.data)
+            if node == self.nodes[-1]:
+                break
+            result += '\n'
         return result
