@@ -3,8 +3,8 @@
 
 
 class MagicClass:
-    """whatevr"""
-
+    """Translation:
+        from bytecode to code"""
     def __init__(self, radius=0):
         """init"""
         self._MagicClass__radius = 0
