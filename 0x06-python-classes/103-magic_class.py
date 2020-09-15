@@ -4,6 +4,7 @@
 
 class MagicClass:
     """whatevr"""
+
     def __init__(self, radius):
         """init"""
         self.__radius = 0
