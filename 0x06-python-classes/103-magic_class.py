@@ -5,17 +5,17 @@
 class MagicClass:
     """whatevr"""
 
-    def __init__(self, radius):
+    def __init__(self, radius=0):
         """init"""
-        self.__radius = 0
+        self._MagicClass__radius = 0
         if not type(radius) is int and not type(radius) is float:
             raise TypeError("radius must be a number")
-        self.__radius = radius
+        self._MagicClass__radius = radius
 
     def area(self):
         """area"""
-        return (self.__radius ** 2)*math.pi
+        return (self._MagicClass__radius ** 2)*math.pi
 
     def circumference(self):
         """circumference"""
-        return 2*math.pi*self.__radius
+        return 2*math.pi*self._MagicClass__radius
