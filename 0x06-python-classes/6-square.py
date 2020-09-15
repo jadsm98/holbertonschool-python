@@ -4,7 +4,7 @@
 
 class Square:
     """coordinate of a square"""
-    def __init__(self, size=0, position=(0,0)):
+    def __init__(self, size=0, position=(0, 0)):
         """init"""
         self.size = size
         self.position = position
@@ -22,7 +22,8 @@ class Square:
     @position.setter
     def position(self, value):
         """setter for position"""
-        if type(value) is not tuple or len(value) != 2 or all(i < 0 for i in value):
+        if type(value) is not tuple or len(value) \
+           != 2 or all(i < 0 for i in value):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__position = value
@@ -46,6 +47,8 @@ class Square:
         if self.__size == 0:
             print()
         else:
+            if self.__position[1] > 0:
+                print()
             for i in range(self.__size):
                 print(' '*self.__position[0], end='')
                 for j in range(self.__size):
