@@ -26,26 +26,26 @@ class Square:
         """Area"""
         return self.__size*self.__size
 
-    def __gt__(self,value):
+    def __gt__(self, value):
         """greater than"""
         return self.area() > value.area()
 
-    def __eq__(self,value):
+    def __eq__(self, value):
         """equal"""
         return self.area() == value.area()
 
-    def __ge__(self,value):
+    def __ge__(self, value):
         """greater or equal"""
         return self.area() >= value.area()
 
-    def __lt__(self,value):
+    def __lt__(self, value):
         """less than"""
         return self.area() < value.area()
 
-    def __le__(self,value):
+    def __le__(self, value):
         """less or equal"""
         return self.area() <= value.area()
 
-    def __ne__(self,value):
+    def __ne__(self, value):
         """not equal"""
         return self.area() != value.area()
