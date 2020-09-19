@@ -33,3 +33,7 @@ It includes the matrix_divided() function:
    >>> m.matrix_divided()
    Traceback (most recent call last):
    TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+   >>> m.matrix_divided([[3, 4], [1, 2]], float('inf'))
+   [[0.3, 0.4], [0.1, 0.2]]
+   >>> m.matrix_divided([[3, 4], [1, 2]], -float('inf'))
+   [[0.3, 0.4], [0.1, 0.2]]
