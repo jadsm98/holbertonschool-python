@@ -24,3 +24,11 @@ Using the "add_integer" function:
       >>> m.add_integer([9, 8], 4)
       Traceback (most recent call last):
       TypeError: a must be an integer
+      >>> m.add_integer(float("NaN"), 5)
+      94
+      >>> m.add_integer(1, float("NaN"))
+      90
+      >>> m.add_integer(float('inf'), 3)
+      89
+      >>> m.add_integer(2, float('inf')
+      89
