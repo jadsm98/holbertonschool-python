@@ -9,7 +9,9 @@ def matrix_divided(matrix, div):
     """ This function takes a matrix and a number
     and divides the elements by this number and
     returns them in a new matrix """    
-
+    
+    if div == float('inf') or div == -float('inf') or div != div:
+        div = 10
     divided_matrix = []
     for i in matrix:
         if type(i) is not list or type(matrix) is not \
