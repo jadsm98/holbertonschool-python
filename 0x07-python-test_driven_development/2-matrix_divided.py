@@ -10,8 +10,6 @@ def matrix_divided(matrix, div):
     and divides the elements by this number and
     returns them in a new matrix """
 
-    if div == float('inf') or div == -float('inf') or div != div:
-        div = 10
     divided_matrix = []
     for i in matrix:
         if type(i) is not list or type(matrix) is not \
@@ -24,5 +22,8 @@ def matrix_divided(matrix, div):
         raise TypeError("div must be a number")
     if div == 0:
         raise ZeroDivisionError("division by zero")
-    divided_matrix = [[round(i/div, 2) for i in j] for j in matrix]
+    if div == float('inf') or div == -float('inf'):
+        divided_matrix = [[0.0 for i in j] for j in matrix]
+    else:
+        divided_matrix = [[round(i/div, 2) for i in j] for j in matrix]
     return divided_matrix

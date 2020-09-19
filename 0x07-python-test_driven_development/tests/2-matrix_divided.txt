@@ -25,8 +25,6 @@ It includes the matrix_divided() function:
    >>> m.matrix_divided('hey', 5)
    Traceback (most recent call last):
    TypeError: matrix must be a matrix (list of lists) of integers/floats
-   >>> m.matrix_divided([[3, 4], [1, 2]], float('nan'))
-   [[0.3, 0.4], [0.1, 0.2]]
    >>> m.matrix_divided([[1, 2], [3, 4]])
    Traceback (most recent call last):
    TypeError: matrix_divided() missing 1 required positional argument: 'div'
@@ -34,6 +32,6 @@ It includes the matrix_divided() function:
    Traceback (most recent call last):
    TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
    >>> m.matrix_divided([[3, 4], [1, 2]], float('inf'))
-   [[0.3, 0.4], [0.1, 0.2]]
+   [[0.0, 0.0], [0.0, 0.0]]
    >>> m.matrix_divided([[3, 4], [1, 2]], -float('inf'))
-   [[0.3, 0.4], [0.1, 0.2]]
+   [[0.0, 0.0], [0.0, 0.0]]
