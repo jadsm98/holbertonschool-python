@@ -32,3 +32,5 @@ Using the "add_integer" function:
       89
       >>> m.add_integer(2, float('inf')
       89
+      >>> m.add_integer(2, -float('inf')
+      89
