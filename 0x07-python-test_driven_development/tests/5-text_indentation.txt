@@ -1,0 +1,30 @@
+This is the 'Text Indentation' test
+===================================
+
+Includes 'text_indentation' function:
+
+>>> t = __import__('5-text_indentation')
+>>> t.text_indentation('This is. a text: that will ? be printed.')
+This is.
+<BLANKLINE>
+a text:
+<BLANKLINE>
+that will ?
+<BLANKLINE>
+be printed.
+<BLANKLINE>
+>>> t.text_indentation(5675)
+Traceback (most recent call last):
+TypeError: text must be a string
+>>> t.text_indentation(['hello', 'there', True])
+Traceback (most recent call last):
+TypeError: text must be a string
+>>> t.text_indentation('This is. a text:  that will ? be printed.')
+This is.
+<BLANKLINE>
+a text:
+<BLANKLINE>
+that will ?
+<BLANKLINE>
+be printed.
+<BLANKLINE>

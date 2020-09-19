@@ -1,0 +1,19 @@
+This is the Say my name module
+===============================
+
+Includes say_my_name function:
+
+	 >>> s = __import__('3-say_my_name')
+	 >>> s.say_my_name('jad', 'samaha')
+	 My name is jad samaha
+	 >>> s.say_my_name('Bob')
+	 My name is Bob 
+	 >>> s.say_my_name()
+	 Traceback (most recent call last):
+	 TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+	 >>> s.say_my_name(5, 'jureidini')
+	 Traceback (most recent call last):
+	 TypeError: first_name must be a string
+	 >>> s.say_my_name('hajj', True)
+	 Traceback (most recent call last):
+	 TypeError: last_name must be a string
