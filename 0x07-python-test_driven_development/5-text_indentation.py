@@ -7,7 +7,7 @@ it into lines with a new line in between
 
 def text_indentation(text):
     """ Function that takes a text as a string
-        and prints it with 2 new lines when 
+        and prints it with 2 new lines when
         '.', '?' or ':' appear """
 
     if type(text) is not str:
