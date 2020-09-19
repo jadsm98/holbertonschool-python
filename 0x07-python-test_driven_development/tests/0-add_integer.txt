@@ -30,7 +30,7 @@ Using the "add_integer" function:
       90
       >>> m.add_integer(float('inf'), 3)
       89
-      >>> m.add_integer(2, float('inf')
+      >>> m.add_integer(2, float('inf'))
       89
-      >>> m.add_integer(2, -float('inf')
+      >>> m.add_integer(2, -float('inf'))
       89
