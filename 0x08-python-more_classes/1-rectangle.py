@@ -4,15 +4,16 @@
 
 class Rectangle:
     """Class that takes in attributes width and height
-    of a rectangle"""
+       of a rectangle"""
 
     def __init__(self, width=0, height=0):
-        self.__width = width
-        self.__height = height
+        self.width = width
+        self.height = height
 
     @property
     def width(self):
         return self.__width
+
     @property
     def height(self):
         return self.__height
