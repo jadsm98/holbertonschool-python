@@ -1,19 +1,18 @@
 #!/usr/bin/python3
-""" Module 5-rectangle """
+"""Module 5-rectangle"""
 
 
 class Rectangle:
-    """ class Rectangle """
-
-class Rectangle:
+    """Class Rectangle5"""
 
     def __init__(self, width=0, height=0):
-        self.__width = width
-        self.__height = height
+        self.width = width
+        self.height = height
 
     @property
     def width(self):
         return self.__width
+    
     @property
     def height(self):
         return self.__height
