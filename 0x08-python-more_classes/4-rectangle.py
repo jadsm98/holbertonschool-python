@@ -3,8 +3,7 @@
 
 
 class Rectangle:
-    """Class named
-Rectangle4"""
+    """Class named Rectangle4"""
 
     def __init__(self, width=0, height=0):
         self.width = width
@@ -56,4 +55,5 @@ Rectangle4"""
         return rep
 
     def __repr__(self):
-        return "Rectangle(" + str(self.__width) + ', ' + str(self.__height) + ")"
+        return "Rectangle(" + str(self.__width) + \
+                ', ' + str(self.__height) + ")"
