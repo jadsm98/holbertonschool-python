@@ -1,20 +1,20 @@
 #!/usr/bin/python3
 """Module to compute the area and
-   perimeter of a rectangle
-"""
+   perimeter of a rectangle"""
 
 
 class Rectangle:
-    """ Class that computes the area and perimeter
-    of a rectangle based on inputed height and width """
+    """Class that computes the area and perimeter
+       of a rectangle based on inputed height and width"""
 
     def __init__(self, width=0, height=0):
-        self.__width = width
-        self.__height = height
+        self.width = width
+        self.height = height
 
     @property
     def width(self):
         return self.__width
+
     @property
     def height(self):
         return self.__height
