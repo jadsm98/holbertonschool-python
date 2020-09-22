@@ -1,12 +1,10 @@
 #!/usr/bin/python3
-"""
-Module that define a rectangle
-"""
+"""Module that define a rectangle"""
 
 
 class Rectangle:
-    """ Class that takes in attributes width and height
-    of a rectangle """
+    """Class that takes in attributes width and height
+    of a rectangle"""
 
     def __init__(self, width=0, height=0):
         self.__width = width
