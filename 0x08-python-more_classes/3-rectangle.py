@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """Module that visually represents the 
-rectangle obtained"""
+   rectangle obtained"""
 
 
 class Rectangle:
     """Class that represents the rectangle 
-       using "#" depending on its size"""
+    using "#" depending on its size"""
 
     def __init__(self, width=0, height=0):
         self.width = width
