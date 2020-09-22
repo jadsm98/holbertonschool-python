@@ -9,13 +9,16 @@ class Rectangle:
 
     number_of_instances = 0
     print_symbol = '#'
+
     def __init__(self, width=0, height=0):
-        self.__width = width
-        self.__height = height
+        self.width = width
+        self.height = height
         type(self).number_of_instances += 1
+
     @property
     def width(self):
         return self.__width
+
     @property
     def height(self):
         return self.__height
@@ -27,7 +30,7 @@ class Rectangle:
         if value < 0:
             raise ValueError("width must be >= 0")
         self.__width = value
-        
+
     @height.setter
     def height(self, value):
         if type(value) is not int:
@@ -58,12 +61,13 @@ class Rectangle:
         return rep
 
     def __repr__(self):
-        return "Rectangle(" + str(self.__width) + ', ' + str(self.__height) + ")"
-        
+        return "Rectangle(" + str(self.__width) + \
+                ', ' + str(self.__height) + ")"
+
     def __del__(self):
         type(self).number_of_instances -= 1
         print("Bye rectangle...")
-        
+
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
         if not isinstance(rect_1, Rectangle):
