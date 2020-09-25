@@ -9,7 +9,6 @@ def canUnlockAll(boxes):
     boxesDict[0] = False  # unlocked
     for i in range(len(boxes) - 1):
         boxesDict[i + 1] = True  # locked
-    print(boxesDict)
 
     while True:
         change = False
@@ -17,7 +16,6 @@ def canUnlockAll(boxes):
             if not boxesDict[i]:
                 for key in box:
                     if boxesDict[key]:
-                        print("unlocked box: {}".format(key))
                         boxesDict[key] = False
                         change = True
         if not change:
@@ -27,4 +25,3 @@ def canUnlockAll(boxes):
         if lockStatus:
             return False
     return True
-
