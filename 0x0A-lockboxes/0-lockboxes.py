@@ -8,8 +8,14 @@ def canUnlockAll(boxes):
     True
     >>>canUnlockAll([[1, 4], [2], [0, 4, 1], [3], [], [4, 1], [5, 6]])
     False
+    >>>canUnlockAll(45)
+    Traceback (most recent call last):
+    TypeError: boxes should be a list of lists
  """
 
+
+    if not all(type(i) is list for i in boxes) and not type(boxes) is list:
+        raise TypeError("boxes should be a list of lists")
 
     boxesDict = {}
     boxesDict[0] = False  # unlocked
