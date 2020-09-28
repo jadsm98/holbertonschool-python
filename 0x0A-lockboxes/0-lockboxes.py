@@ -10,9 +10,9 @@ def canUnlockAll(boxes):
     unlocked = [0]
     while True:
         change = False
-        for i, box in enumerate(boxes):
+        for i in range(len(boxes)):
             if i in unlocked:
-                for key in box:
+                for key in boxes[i]:
                     if key not in unlocked:
                         unlocked.append(key)
                         change = True
