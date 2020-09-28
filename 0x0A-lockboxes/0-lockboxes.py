@@ -5,19 +5,13 @@
 def canUnlockAll(boxes):
     """function that opens boxes"""
 
-    if not all(type(j) is list for j in boxes) and not type(boxes) is list:
-        return False
     unlocked = [0]
-    while True:
-        change = False
-        for i in range(len(boxes)):
+    for loop in range(2):
+        for i, box in enumerate(boxes):
             if i in unlocked:
-                for key in boxes[i]:
+                for key in box:
                     if key not in unlocked:
                         unlocked.append(key)
-                        change = True
-        if not change:
-            break
     if len(unlocked) == len(boxes):
         return True
     return False
