@@ -5,7 +5,6 @@
 def canUnlockAll(boxes):
     """function that opens boxes"""
 
-
     boxesDict = {}
     boxesDict[0] = False
     for i in range(len(boxes) - 1):
