@@ -16,7 +16,7 @@ def canUnlockAll(boxes):
                     if key not in unlocked:
                         unlocked.append(key)
                         change = True
-        if not change or len(unlocked) == len(boxes):
+        if not change:
             break
     if len(unlocked) == len(boxes):
         return True
