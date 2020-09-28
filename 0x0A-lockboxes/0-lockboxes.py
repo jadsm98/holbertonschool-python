@@ -14,26 +14,21 @@ def canUnlockAll(boxes):
     TypeError: boxes should be a list of lists
     """
 
-
-    if not all(type(i) is list for i in boxes) or not type(boxes) is list:
-        raise TypeError("boxes should be a list of lists")
-
     boxesDict = {}
-    boxesDict[0] = False  # unlocked
+    boxesDict[0] = False
     for i in range(len(boxes) - 1):
-        boxesDict[i + 1] = True  # locked
-
+        boxesDict[i + 1] = True
+    unlocked_boxes = []
     while True:
-        change = False
-        for i, box in enumerate(boxes):
-            if not boxesDict[i]:
-                for key in box:
-                    if boxesDict[key]:
-                        boxesDict[key] = False
-                        change = True
-        if not change:
+        new_list = [i for i in unlocked_boxes]
+        unlocked_boxes = []
+        for box, lockStatus in boxesDict.items():
+            unlocked_boxes.append(box)
+        if new_list == unlocked_boxes:
             break
-
+        for b in unlocked_boxes:
+            for k in boxes[b]:
+                boxesDict[k] = False
     for box, lockStatus in boxesDict.items():
         if lockStatus:
             return False
