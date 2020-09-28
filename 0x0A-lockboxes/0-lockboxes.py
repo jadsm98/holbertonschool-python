@@ -11,9 +11,9 @@ def canUnlockAll(boxes):
         boxesDict[i + 1] = True
     while True:
         change = False
-        for i, box in enumerate(boxes):
+        for i in range(len(boxes)):
             if not boxesDict[i]:
-                for key in box:
+                for key in boxes[i]:
                     if boxesDict[key]:
                         boxesDict[key] = False
                         change = True
