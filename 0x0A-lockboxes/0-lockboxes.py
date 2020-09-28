@@ -8,7 +8,7 @@ def canUnlockAll(boxes):
     if not all(type(i) is list for i in boxes) or not type(boxes) is list:
         raise TypeError("boxes must be a list of lists")
     unlocked = [0]
-    while True:
+    for loop in range(len(boxes)):
         change = False
         for i, box in enumerate(boxes):
             if i in unlocked:
