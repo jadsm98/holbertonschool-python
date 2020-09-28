@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module Lockboxes"""
 
+
 def canUnlockAll(boxes):
     """ function to check if all
     boxes in a list are unlocked:
@@ -11,10 +12,10 @@ def canUnlockAll(boxes):
     >>>canUnlockAll(45)
     Traceback (most recent call last):
     TypeError: boxes should be a list of lists
- """
+    """
 
 
-    if not all(type(i) is list for i in boxes) and not type(boxes) is list:
+    if not all(type(i) is list for i in boxes) or not type(boxes) is list:
         raise TypeError("boxes should be a list of lists")
 
     boxesDict = {}
