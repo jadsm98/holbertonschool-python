@@ -6,7 +6,7 @@ def canUnlockAll(boxes):
     """function that opens boxes"""
 
     unlocked = [0]
-    while True:
+    for loop in range(2):
         change = False
         for i, box in enumerate(boxes):
             if i in unlocked:
