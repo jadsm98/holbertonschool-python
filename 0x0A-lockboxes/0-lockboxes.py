@@ -5,6 +5,8 @@
 def canUnlockAll(boxes):
     """function that opens boxes"""
 
+    if not all(type(j) is list for j in boxes) and not type(boxes) is list:
+        return False
     unlocked = [0]
     while True:
         change = False
