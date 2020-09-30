@@ -1,5 +1,6 @@
 #!/usr/bin/python3
+"""Module Lookup"""
 
 
 def lookup(obj):
-    return dir(obj)
+    return list(dir(obj))
