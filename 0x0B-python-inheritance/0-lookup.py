@@ -3,4 +3,6 @@
 
 
 def lookup(obj):
+    """class to inherit from list"""
+
     return list(dir(obj))
