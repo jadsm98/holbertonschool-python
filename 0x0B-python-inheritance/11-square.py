@@ -17,4 +17,4 @@ class Square(Rectangle):
         return self.__size*self.__size
 
     def __repr__(self):
-        return "[Square]" + str(self.__width) + "/" + str(self.__height)
+        return "[Square]" + str(self.__size) + "/" + str(self.__size)
