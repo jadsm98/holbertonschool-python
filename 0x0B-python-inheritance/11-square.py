@@ -6,12 +6,15 @@ Rectangle = __import__('9-rectangle').Rectangle
 
 
 class Square(Rectangle):
-    """class Square"""
+    """class Square2"""
 
     def __init__(self, size):
-        super().__init__(size, size)
         self.__size = size
-        Rectangle.integer_validator(self, "size", self.__size)
+        self.integer_validator("size", size)
+        super().__init__(size, size)
+
+    def integer_validator(self, name, value):
+        return super().integer_validator(name, value)
 
     def area(self):
         return self.__size*self.__size
