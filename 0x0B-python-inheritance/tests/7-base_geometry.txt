@@ -24,3 +24,4 @@ Test Case for 7-base_geometry:
         TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 	>>> print(isinstance(bg, BaseGeometry))
 	True
+	>>> bg.integer_validator("", 4)
