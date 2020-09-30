@@ -7,6 +7,6 @@ def add_attribute(obj, key, value):
 
     if type(obj) in [int, float, complex, str, bool,
                      range, frozenset, bytearray, memoryview,
-                     tuple, list, bytes, dict, set]:
+                     tuple, list, bytes, dict, set, None]:
         raise TypeError("can't add new attribute")
     setattr(obj, key, value)
