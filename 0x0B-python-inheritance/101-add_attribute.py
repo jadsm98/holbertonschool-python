@@ -4,7 +4,7 @@
 
 def add_attribute(obj, key, value):
     """ function that adds attributes"""
-    
+
     try:
         setattr(obj, key, value)
     except AttributeError:
