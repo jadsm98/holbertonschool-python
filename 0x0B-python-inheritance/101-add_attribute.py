@@ -5,6 +5,6 @@
 def add_attribute(obj, key, value):
     """ function that adds attributes"""
 
-    if type(obj) in [int, float, str, bool, tuple, list, bytes, dict, set, file]:
+    if type(obj) in [int, float, complex, str, bool, tuple, list, bytes, dict, set]:
         raise TypeError("can't add new attribute")
     setattr(obj, key, value)
