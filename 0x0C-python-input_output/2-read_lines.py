@@ -6,8 +6,7 @@ def read_lines(filename="", nb_lines=0):
     """function read_lines"""
 
     with open(filename) as f:
-        num = sum(1 for line in f)
-        if nb_lines <= 0 or nb_lines >= num:
+        if nb_lines <= 0:
             for line in f:
                 print(line, end="")
         else:
