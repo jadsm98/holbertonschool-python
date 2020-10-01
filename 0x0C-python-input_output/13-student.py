@@ -18,7 +18,8 @@ class Student:
                     dic[key] = value
             return dic
         return self.__dict__
-        
+
     def reload_from_json(self, json):
-        self.__dict__ = json
+        for k, v in json.items():
+            self.__dict__[k] = v
         return self.__dict__
