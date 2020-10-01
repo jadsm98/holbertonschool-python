@@ -5,6 +5,6 @@
 def read_file(filename=""):
     """function that reads files"""
 
-    with open("filename") as f:
+    with open(filename) as f:
         for line in f:
             print(line ,end="")
