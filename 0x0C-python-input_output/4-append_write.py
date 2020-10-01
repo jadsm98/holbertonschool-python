@@ -6,4 +6,4 @@ def append_write(filename="", text=""):
     """function append_write"""
 
     with open(filename, "a+") as f:
-        return f.append(text)
+        return f.write(text)
