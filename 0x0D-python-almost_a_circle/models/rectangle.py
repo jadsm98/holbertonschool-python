@@ -2,10 +2,10 @@
 """module rectangle"""
 
 
-import models.base
+from models.base import Base
 
 
-class Rectangle(models.base.Base):
+class Rectangle(Base):
     """class Rectangle"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
@@ -84,7 +84,7 @@ class Rectangle(models.base.Base):
     def area(self):
         """computes the area"""
 
-       return self.__width*self.__height
+        return self.__width*self.__height
 
     def display(self):
         """displays the rectangle"""
