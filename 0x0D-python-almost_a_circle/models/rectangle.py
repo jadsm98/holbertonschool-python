@@ -35,10 +35,14 @@ class Rectangle(Base):
 
     @property
     def width(self):
+        """width getter"""
+
         return self.__width
 
     @width.setter
     def width(self, width):
+        """width setter"""
+
         if not type(width) is int:
             raise TypeError("width must be an integer")
         elif width <= 0:
@@ -47,10 +51,14 @@ class Rectangle(Base):
 
     @property
     def height(self):
+        """height getter"""
+
         return self.__height
 
     @height.setter
     def height(self, height):
+        """height setter"""
+
         if not type(height) is int:
             raise TypeError("height must be an integer")
         elif height <= 0:
@@ -59,10 +67,14 @@ class Rectangle(Base):
 
     @property
     def x(self):
+        """x getter"""
+
         return self.__x
 
     @x.setter
     def x(self, x):
+        """x setter"""
+
         if not type(x) is int:
             raise TypeError("x must be an integer")
         elif x < 0:
@@ -71,10 +83,14 @@ class Rectangle(Base):
 
     @property
     def y(self):
+        """y getter"""
+
         return self.__y
 
     @y.setter
     def y(self, y):
+        """y setter"""
+
         if not type(y) is int:
             raise TypeError("y must be an integer")
         elif y < 0:
@@ -99,11 +115,14 @@ class Rectangle(Base):
         return res
 
     def __str__(self):
+        """string formating"""
+
         return '[Rectangle] ({}) {}/{} - {}/{}'\
             .format(self.id, self.__x, self.__y, self.__width, self.__height)
 
     def update(self, *args, **kwargs):
-        
+        """update instance"""
+
         if len(args) == 0:
             for k, v in kwargs.items():
                 if 'width' in k:
@@ -130,6 +149,8 @@ class Rectangle(Base):
                     self.y = arg
 
     def to_dictionary(self):
+        """to dictionary"""
+
         dicts = {'id': self.id, 'width': self._Rectangle__width,
                  'height': self._Rectangle__height, 'x': self._Rectangle__x,
                  'y': self._Rectangle__y}
