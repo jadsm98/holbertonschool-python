@@ -76,7 +76,8 @@ class Base:
             writer = csv.writer(f, lineterminator='\n')
             for i in ls:
                 if cls is Rectangle:
-                    writer.writerow([i['id'], i['width'], i['height'], i['x'], i['y']])
+                    writer.writerow([i['id'], i['width'],
+                                     i['height'], i['x'], i['y']])
                 elif cls is Square:
                     writer.writerow([i['id'], i['size'], i['x'], i['y']])
 
