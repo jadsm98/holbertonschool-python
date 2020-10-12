@@ -5,6 +5,7 @@
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
+from models.square import Square
 
 
 class TestBase(unittest.TestCase):
@@ -33,22 +34,9 @@ class TestBase(unittest.TestCase):
     def test_to_json_string(self):
         print('test_to_json_string')
 
-        self.dct1 = {'hey': 3, 'you': True, 4: (3, 9)}
-        self.dct2 = {3: 5, 'y': 'i'}
-        self.assertEqual(Base.to_json_string([self.dct1, self.dct2]),
-                         '[{"hey": 3, "you": true, "4": [3, 9]}, {"3": 5, "y": "i"}]')
         self.assertEqual(Base.to_json_string(None), "[]")
         self.assertEqual(Base.to_json_string([]), "[]")
 
-    def test_save_to_file(self):
-        print('test_save_to_file')
-        self.r1 = Square(1, 2, 6, 2)
-        self.r2 = Square(2, 5, 7, 1)
-        Rectangle.save_to_file([self.r1, self.r2])
-        with open("Rectangle.json", "r") as file:
-            read = file.read()
-            print(read)
-        self.assertMultiLineEqual(read, '[{"id": 2, "size": 1, "x": 2, "y": 6}, {"id": 1, "size": 2, "x": 5, "y": 7}]')
 
     def test_from_json_string(self):
         print('test_from_json_string')
