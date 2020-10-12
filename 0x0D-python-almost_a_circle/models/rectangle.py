@@ -6,8 +6,11 @@ import models.base
 
 
 class Rectangle(models.base.Base):
+    """class Rectangle"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
+        """instantiation"""
+
         super().__init__(id)
         if not type(width) is int:
             raise TypeError("width must be an integer")
@@ -79,9 +82,13 @@ class Rectangle(models.base.Base):
         self.__y = y
 
     def area(self):
-        return self.__width*self.__height
+        """computes the area"""
+
+       return self.__width*self.__height
 
     def display(self):
+        """displays the rectangle"""
+
         res = '\n'*self.__y
         res += ' '*self.__x + '#'*self.__width
         for i in range(self.__height - 1):
@@ -96,7 +103,7 @@ class Rectangle(models.base.Base):
             .format(self.id, self.__x, self.__y, self.__width, self.__height)
 
     def update(self, *args, **kwargs):
-
+        
         if len(args) == 0:
             for k, v in kwargs.items():
                 if 'width' in k:
