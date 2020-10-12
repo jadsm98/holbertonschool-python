@@ -19,12 +19,16 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
+        """from dict to json"""
+
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
         return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
+        """from object to dict to file using json"""
+
         from models.rectangle import Rectangle
         from models.square import Square
         ls = list(cls.to_dictionary(i) for i in list_objs)
@@ -33,18 +37,24 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
+        """from json to dict"""
+
         if json_string is None or json_string == '':
             return []
         return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
+        """ create an instance"""
+
         dum = cls(1, 1)
         dum.update(**dictionary)
         return dum
 
     @classmethod
     def load_from_file(cls):
+        """load data from file"""
+
         try:
             with open('{}.json'.format(cls.__name__), 'r') as f:
                 read = cls.from_json_string(f.read())
@@ -54,6 +64,8 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
+        """save to a csv file"""
+
         from models.rectangle import Rectangle
         from models.square import Square
         ls = list(cls.to_dictionary(i) for i in list_objs)
@@ -67,6 +79,8 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
+        """ load from a csv file"""
+
         from models.rectangle import Rectangle
         from models.square import Square
         try:
