@@ -1,15 +1,15 @@
 #!/usr/bin/python3
-"""module"""
+"""module Square"""
 
 
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """class Square"""
+    """class Square that inherits from rectangle"""
 
     def __init__(self, size, x=0, y=0, id=None):
-        """inherit from rectangle"""
+        """inherits from rectangle"""
 
         super().__init__(size, size, x, y, id)
 
@@ -37,7 +37,7 @@ class Square(Rectangle):
         self.height = v
 
     def update(self, *args, **kwargs):
-       """update instance"""
+        """update instance"""
 
         if len(args) == 0:
             for k, v in kwargs.items():
