@@ -21,11 +21,11 @@ def minOperations(n):
                 break
             for val in range(j, len(div)):
                 if div[val] % a == 0:
-                    a *= int(div[val]/numb)
-                    res += int(div[val]/numb)
+                    a *= div[val]/numb
+                    res += div[val]/numb
                     x = False
                     break
             if x is True:
                 a += 1
                 res += 1
-    return res
+    return int(res)
