@@ -3,6 +3,7 @@
 
 
 def minOperations(n):
+    """minimum operations"""
 
     if not type(n) is int or n <= 1:
         return 0
