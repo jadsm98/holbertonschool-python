@@ -5,6 +5,8 @@
 def minOperations(n):
     """minimum operations"""
 
+    if not type(n) is int or n < 0:
+        return 0
     div = []
     for i in range(2, n + 1):
         if n % i == 0:
