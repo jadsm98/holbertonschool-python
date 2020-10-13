@@ -3,6 +3,7 @@
 
 
 def minOperations(n):
+
     if not type(n) is int or n < 1:
         return 0
     div = []
@@ -13,16 +14,17 @@ def minOperations(n):
     res = 2
     for j, i in enumerate(div):
         while a < i:
+            x = True
             numb = a
             if a > n:
                 break
-            if i % a == 0:
-                a *= int(i/numb)
-                res += int(i/numb)
-            elif div[j + 1] % a == 0:
-                a *= int(div[j + 1]/numb)
-                res += int(div[j + 1]/numb)
-            else:
+            for val in range(j, len(div)):
+                if div[val] % a == 0:
+                    a *= int(div[val]/numb)
+                    res += int(div[val]/numb)
+                    x = False
+                    break
+            if x is True:
                 a += 1
                 res += 1
     return res
