@@ -1,3 +1,3 @@
 #!/bin/bash
 #comment
-curl "$1" -siX OPTIONS | grep -i Allow:  | awk '{$1=""; print $0}'
+curl "$1" -i -sX OPTIONS | grep -i Allow | awk '{$1="";print}' | sed -e 's/^[[:space:]]*//'
