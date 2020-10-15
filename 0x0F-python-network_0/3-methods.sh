@@ -1,3 +1,3 @@
 #!/bin/bash
 #comment
-curl -sX OPTIONS "$1" -i | grep -i Allow | awk '{print $2}'
+curl -i -sX OPTIONS "$1" | grep -i Allow | awk '{$1=""; print $0}'
