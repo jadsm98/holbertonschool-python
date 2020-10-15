@@ -1,3 +1,3 @@
 #!/bin/bash
 #comment
-curl -sX GET '$1' -H "X-HolbertonSchool-User-Id: 98"
+curl '$1' -sX GET -H "X-HolbertonSchool-User-Id: 98"
