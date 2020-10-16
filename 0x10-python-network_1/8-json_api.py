@@ -13,10 +13,8 @@ if __name__ == '__main__':
         res = {'q': sys.argv[1]}
     r = requests.post('http://0.0.0.0:5000/search_user', data=res)
     try:
-        r.json()
-        print('[{}] {}'.format(dict(r.text).get('id'), dict(r.text).get('\
-name')))
-    except ValueError as e:
+        print('[{}] {}'.format(dict(r.json()).get('id'), dict(r.json()).get('                               name')))
+    except ValueError:
         if r.status_code == 204:
             print('No result')
         else:
