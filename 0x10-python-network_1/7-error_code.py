@@ -2,7 +2,7 @@
 """module"""
 
 
-if __name__ =='_main__':
+if __name__ == '_main__':
 
     import requests
     import sys
