@@ -13,9 +13,9 @@ if __name__ == '__main__':
         res = {'q': sys.argv[1]}
     r = requests.post('http://0.0.0.0:5000/search_user', data=res)
     try:
-        print('[{}] {}'.format(dict(r.json()).get('id'), dict(r.json()).get('                               name')))
-    except ValueError:
-        if r.status_code == 204:
-            print('No result')
+        if r.json() == '{}':
+            print ('No result')
         else:
-            print('Not a valid JSON')
+            print('[{}] {}'.format(dict(r.json()).get('id'), dict(r.json()).get('                               name')))
+    except ValueError:
+        print('Not a valid JSON')
