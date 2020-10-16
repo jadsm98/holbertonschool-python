@@ -1,12 +1,11 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """module"""
 
 
 import urllib.request
 
 
-req = urllib.request.Request('https://intranet.hbtn.io/status', )
-with urllib.request.urlopen(req) as url:
+with urllib.request.urlopen('https://intranet.hbtn.io/status') as url:
     read = url.read()
 decode = read.decode("utf-8")
 print('Body response:\n\t- type: {}\n\t- content: {}\n\t- utf8 content: {}'
