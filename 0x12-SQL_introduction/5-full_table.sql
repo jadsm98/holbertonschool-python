@@ -1,3 +1,3 @@
 -- Full description
 -- Show command
-SHOW columns FROM first_table\G;
+SHOW CREATE TABLE first_table\G;
