@@ -6,9 +6,10 @@ from sys import argv
 if len(argv) > 2:
     print('Usage: nqueens N')
     exit(1)
-N = argv[1]
-if not type(N) is int:
-    print('N must be a number')
+try:
+    N = int(argv[1])
+except ValueError:
+    print('N must be an integer')
     exit(1)
 if N < 4:
     print('N must be at least 4')
