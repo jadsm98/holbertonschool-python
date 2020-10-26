@@ -9,7 +9,7 @@ if len(argv) > 2:
 try:
     N = int(argv[1])
 except ValueError:
-    print('N must be an integer')
+    print('N must be a number')
     exit(1)
 if N < 4:
     print('N must be at least 4')
