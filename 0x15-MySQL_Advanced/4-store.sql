@@ -1,4 +1,4 @@
 -- Buy
 -- Commands
 CREATE TRIGGER trig AFTER INSERT ON items
-FOR EACH ROW SET @quantity = quantity - NEW.quantity;
+FOR EACH ROW quantity = quantity - NEW.quantity;
