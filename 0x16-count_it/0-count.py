@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 """ Module"""
 
-import requests, collections
-
 hot_l = []
 
 
 def count_words(subreddit, word_list, count=0, after=None):
+    """function"""
+
+    import requests, collections
 
     sub_info = requests.get("https://www.reddit.com/r/{}/hot.json"
                             .format(subreddit),
