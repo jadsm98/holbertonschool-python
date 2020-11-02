@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Module"""
 
-import requests
+import requests, collections
 
 hot_l = []
 
@@ -27,9 +27,10 @@ def count_words(subreddit, word_list, count=0, after=None):
 
     info = sub_info.json()
     if not info.get("data").get("after"):
-        for i in word_list:
-            if hot_l.count(i) != 0:
-                print('{}: {}'.format(i, hot_l.count(i)))
+        r = collections.Counter(hot_l).most_common()
+        for i in r:
+            if i[1] != 0:
+                print('{}: {}'.format(i[0], i[1]))
         return
 
     return count_words(subreddit, word_list, info.get("data").get("count"),
