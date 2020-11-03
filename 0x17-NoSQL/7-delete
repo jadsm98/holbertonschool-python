@@ -1,2 +1,2 @@
 // comment
-db.school.delete({name: "Holberton"})
+db.school.remove({name: "Holberton"})
