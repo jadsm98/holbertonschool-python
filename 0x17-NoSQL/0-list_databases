@@ -1,2 +1,2 @@
 // this is a comment
-db.adminCommand( { listDatabases: 1]} )
+show dbs
