@@ -5,5 +5,5 @@
 def schools_by_topic(mongo_collection, topic):
     """function"""
 
-    x = mongo_collection.find({topic: {$in: topics}}).pretty()
+    x = mongo_collection.find({topic: {"$in": topics}})
     return x
