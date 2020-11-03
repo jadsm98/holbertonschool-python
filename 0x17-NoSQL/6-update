@@ -1,2 +1,2 @@
 // comment
-db.school.updateMany({name: "Holberton school"}, {"$push": {address: "972 Mission street"}})
+db.school.updateMany({name: "Holberton school"}, {$push: {address: "972 Mission street"}})
