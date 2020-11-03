@@ -1,2 +1,2 @@
 // comment
-db.school.findMany({name: {$regex: "^Holberton$"}})
+db.school.find({name: {$regex: "^Holberton*"}}).pretty()
