@@ -19,6 +19,3 @@ class Cache:
         id = uuid.uuid1()
         self._redis.set(id.int, data)
         return id.int
-
-r = Cache()
-print(r.store(4.1))
