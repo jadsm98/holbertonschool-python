@@ -14,8 +14,6 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    def store(self, data) -> str:
+    def store(self, data):
         """method"""
-        ran = uuid.uuid1().bytes
-        self._redis.set(ran, data)
         return data
