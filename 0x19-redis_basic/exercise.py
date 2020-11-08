@@ -4,17 +4,18 @@
 
 import redis
 import uuid
+from typing import Union
 
 
 class Cache:
     """this is a class"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """init"""
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    def store(self, data) -> str:
+    def store(self, data: Union[str, int, float, bytes]) -> str:
         """method"""
         id = uuid.uuid1()
         self._redis.set(id.int, data)
