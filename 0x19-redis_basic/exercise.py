@@ -11,10 +11,10 @@ class Cache:
 
     def __init__(self):
         """init"""
-        self._redis = 2
+        self._redis = redis.Redis()
         self._redis.flushdb()
 
-    def store(self, data):
+    def stor(self, data):
         """method"""
         id = uuid.uuid1()
         self._redis.set(id.int, data)
