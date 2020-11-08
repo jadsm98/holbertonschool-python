@@ -18,4 +18,4 @@ class Cache:
         """method"""
         ran = str(uuid.uuid1())
         self._redis.set(ran, data)
-        return self._redis.get(ran).decode("utf-8")
+        return self._redis.get(ran)
