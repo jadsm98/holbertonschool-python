@@ -4,8 +4,6 @@
 
 import redis
 import uuid
-from typing import Union
-
 
 class Cache:
     """this is a class"""
@@ -19,4 +17,7 @@ class Cache:
         """method"""
         id = uuid.uuid1()
         self._redis.set(id.int, data)
-        return id.int
+        return id.str
+
+#    def get(self, key: str, fn=None):
+#        """method"""
