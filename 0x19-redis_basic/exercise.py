@@ -16,6 +16,6 @@ class Cache:
 
     def store(self, data) -> str:
         """method"""
-        ran = int(uuid.uuid1())
+        ran = uuid.uuid1().bytes
         self._redis.set(ran, data)
-        return self._redis.get(ran).decode("utf-8")
+        return self._redis.get(ran)
