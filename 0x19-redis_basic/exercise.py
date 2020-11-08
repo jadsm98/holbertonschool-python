@@ -16,6 +16,9 @@ class Cache:
 
     def store(self, data):
         """method"""
-        id = uuid.uuid()
+        id = uuid.uuid1()
         self._redis.set(id.int, data)
-        return id
+        return id.int
+
+r = Cache()
+print(r.store(4.1))
