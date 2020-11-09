@@ -5,6 +5,7 @@
 import redis
 import uuid
 
+
 class Cache:
     """this is a class"""
 
@@ -13,11 +14,18 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    def store(self, data: Union[str, int, float, bytes]) -> str:
+    def store(self, data) -> str:
         """method"""
         id = uuid.uuid1()
         self._redis.set(id.int, data)
-        return id.str
+        return str(id)
 
-#    def get(self, key: str, fn=None):
-#        """method"""
+    def get(self, key: str, fn=None):
+        """method"""
+        if fn == 'str':
+            return str(self._redis.get(key))
+        elif fn == 'int':
+            return int(self._redis.get(key))
+        elif fn == 'float':
+            return float(self._redis.get(key))
+        return self._redis.get(key)
