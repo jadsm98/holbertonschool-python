@@ -80,9 +80,3 @@ class Cache:
     def get_int(b: bytes) -> int:
         """returns int"""
         return int.from_bytes(b, byteorder='big')
-
-cache = Cache()
-cache.store("foo")
-cache.store("bar")
-cache.store(42)
-replay(cache.store)
