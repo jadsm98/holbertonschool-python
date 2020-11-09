@@ -16,9 +16,10 @@ class Cache:
 
     def store(self, data: Union[str, int, float, bytes]) -> str:
         """method"""
-        id = uuid.uuid4()
-        self._redis.set(id.int, data))
-        return str(id)
+        val = str(uuid.uuid4())
+        self._redis.set(val, data))
+        return val
+
 
     def get(self, key: str, fn: Optional[Callable] = None) -> Union[str, int, float, bytes]:
         """method"""
