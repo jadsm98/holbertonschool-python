@@ -4,6 +4,7 @@
 
 import redis
 import uuid
+from sys import byteorder
 from typing import Union, Optional, Callable
 
 class Cache:
@@ -20,10 +21,17 @@ class Cache:
         self._redis.set(val, data)
         return val
 
-
     def get(self, key: str, fn: Optional[Callable] = None) -> Union[str, int, float, bytes]:
         """method"""
         res = self._redis.get(key)
         if fn:
             res = fn(res) 
         return res
+
+    def get_str(b: bytes) -> str:
+        """returns string"""
+        return b.decode("utf-8")
+
+    def get_int(b: bytes) -> int:
+        """returns int"""
+        return int.from_bytes(b, byteorder='big')
