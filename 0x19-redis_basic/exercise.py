@@ -19,4 +19,4 @@ class Cache:
         """method"""
         id = uuid.uuid1()
         self._redis.set(id.int, data)
-        return str(id)
+        return data
