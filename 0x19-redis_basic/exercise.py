@@ -4,6 +4,7 @@
 
 import redis
 import uuid
+from typing import Union
 
 
 class Cache:
@@ -14,18 +15,8 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    def store(self, data: str) -> str:
+    def store(self, data: Union[str, float, int, bytes]) -> str:
         """method"""
         id = uuid.uuid1()
         self._redis.set(id.int, data)
         return str(id)
-
-    def get(self, key: str, fn=None):
-        """method"""
-        if fn == 'str':
-            return str(self._redis.get(key))
-        elif fn == 'int':
-            return int(self._redis.get(key))
-        elif fn == 'float':
-            return float(self._redis.get(key))
-        return self._redis.get(key)
