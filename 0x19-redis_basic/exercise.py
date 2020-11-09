@@ -3,7 +3,7 @@
 
 
 import redis
-import uuid
+from uuid import uuid4
 from sys import byteorder
 from typing import Union, Optional, Callable, List
 from functools import wraps
@@ -14,23 +14,23 @@ def count_calls(method: Callable) -> Callable:
     key = method.__qualname__
 
     @wraps(method)
-    def wrapper(self, *args, **kwds):
+    def wrapper(self, *args, **kwargs):
         """wraps"""
         self._redis.incr(key)
-        return method(*args, **kwds)
+        return method(*args, **kwargs)
 
     return wrapper
 
 def call_history(method: Callable) -> Callable:
     """decorator"""
-    input = method.__qualname__ + ":inputs"
-    output = method.__qualname__ + ":outputs"
+    input = method.__qualname__ + ':inputs'
+    output = method.__qualname__ + ':outputs'
     
     @wraps(method)
     def wrapper(self, *args, **kwargs):
         """wrapper"""
         self._redis.rpush(input, str(args))
-        out = method(self, *args, **kwargs
+        out = method(self, *args, **kwargs)
         self._redis.rpush(output, str(out))
         return out
 
@@ -47,7 +47,7 @@ def replay(method: Callable) -> None:
     print(name + " was called " + time + " times:")
     for i in zipped:
         print('{}(*{}) -> {}'.format(name, i[0].decode("utf-8"), 
-                                     i[1].decode("utf-8"))
+                                     i[1].decode("utf-8")))
 
 
 class Cache:
@@ -62,7 +62,7 @@ class Cache:
     @call_history
     def store(self, data: Union[str, int, float, bytes]) -> str:
         """method"""
-        val = str(uuid.uuid4())
+        val = str(uuid4())
         self._redis.set(val, data)
         return val
 
