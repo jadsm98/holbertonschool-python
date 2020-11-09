@@ -38,12 +38,16 @@ def call_history(method: Callable) -> Callable:
 
 def replay(method: Callable) -> None:
     """function"""
-    key_i = call_history(method).input
-    key_o = call_history(method).output
-    zipped = zip(key_i, key_o)
-    print(method.__qualname__ + " was called " + len(list(key_i)) + " times:")
-    for i in zipped:
-        print('{}(*{}) -> {}'.format(method.__qualname__, i[0].decode("utf-8"), i[1].decode("utf-8"))
+    name = method.__self__
+    key_i = method.__qualname__ + ":inputs"
+    key_o = method.__qualname__ + ":outputs"
+    zipped = zip(name.self._redis.lrange(key_i, 0, -1),
+                 name.self._redis.lrange(key_i, 0, -1))
+    print(name + " was called " + 
+          name.get(method.__qualname__).decode("utf-8") + " times:")
+    for i in list(zipped):
+        print('{}(*{}) -> {}'.format(name, i[0].decode("utf-8"), 
+                                     i[1].decode("utf-8"))
 
 
 class Cache:
