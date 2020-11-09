@@ -14,7 +14,7 @@ def count_calls(method: Callable) -> Callable:
     key = method.__qualname__
 
     @wraps(method)
-    def wrapper(*args, **kwds):
+    def wrapper(self, *args, **kwds):
         """wraps"""
         self._redis.incr(key)
         return method(*args, **kwds)
@@ -27,7 +27,7 @@ def call_history(method: Callable) -> Callable:
     output = method.__qualname__ + ":outputs"
     
     @wraps(method)
-    def wrapper(*args, **kwargs):
+    def wrapper(self, *args, **kwargs):
         """wrapper"""
         self._redis.rpush(input, str(args))
         out = call_history(method)
@@ -35,6 +35,16 @@ def call_history(method: Callable) -> Callable:
         return method(*args, **kwargs)
 
     return wrapper
+
+def replay(method: Callable) -> None:
+    """function"""
+    key_i = call_history(method).input
+    key_o = call_history(method).output
+    zipped = zip(key_i, key_o)
+    print(method.__qualname__ + " was called " + len(list(key_i)) + " times:")
+    for i in zipped:
+        print('{}(*{}) -> {}'.format(method.__qualname__, i[0].decode("utf-8"), i[1].decode("utf-8"))
+
 
 class Cache:
     """this is a class"""
@@ -66,3 +76,9 @@ class Cache:
     def get_int(b: bytes) -> int:
         """returns int"""
         return int.from_bytes(b, byteorder='big')
+
+cache = Cache()
+cache.store("foo")
+cache.store("bar")
+cache.store(42)
+replay(cache.store)
