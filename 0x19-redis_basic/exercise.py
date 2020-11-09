@@ -12,11 +12,13 @@ from functools import wraps
 def count_calls(method: Callable) -> Callable:
     """decorator"""
     key = method.__qualname__
-    @wraps(count_calls)
+
+    @wraps(method)
     def wrapper(*args, **kwds):
         """wraps"""
         self._redis.incr(key)
         return method(*args, **kwds)
+
     return wrapper
 
 class Cache:
