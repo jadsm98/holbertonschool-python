@@ -5,7 +5,7 @@
 import redis
 import uuid
 from sys import byteorder
-from typing import Union, Optional, Callable
+from typing import Union, Optional, Callable, List
 from functools import wraps
 
 
@@ -30,22 +30,22 @@ def call_history(method: Callable) -> Callable:
     def wrapper(self, *args, **kwargs):
         """wrapper"""
         self._redis.rpush(input, str(args))
-        out = call_history(method)
-        self._redis.rpush(output, out)
-        return method(*args, **kwargs)
+        out = method(self, *args, **kwargs
+        self._redis.rpush(output, str(out))
+        return out
 
     return wrapper
 
 def replay(method: Callable) -> None:
     """function"""
     name = method.__self__
+    count = method.__qualname__
     key_i = method.__qualname__ + ":inputs"
     key_o = method.__qualname__ + ":outputs"
-    zipped = zip(name.self._redis.lrange(key_i, 0, -1),
-                 name.self._redis.lrange(key_i, 0, -1))
-    print(name + " was called " + 
-          name.get(method.__qualname__).decode("utf-8") + " times:")
-    for i in list(zipped):
+    time = name.get(count).decode("utf-8")
+    zipped = list(zip(name.get_list(key_i), name.get_list(key_o)))
+    print(name + " was called " + time + " times:")
+    for i in zipped:
         print('{}(*{}) -> {}'.format(name, i[0].decode("utf-8"), 
                                      i[1].decode("utf-8"))
 
@@ -58,25 +58,32 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    @call_history
     @count_calls
+    @call_history
     def store(self, data: Union[str, int, float, bytes]) -> str:
         """method"""
         val = str(uuid.uuid4())
         self._redis.set(val, data)
         return val
 
-    def get(self, key: str, fn: Optional[Callable] = None) -> Union[str, int, float, bytes]:
+    def get(self, key: str, fn: Optional[Callable] = None) -> Union[str, 
+                                                                    int, 
+                                                                    float, 
+                                                                    bytes]:
         """method"""
         res = self._redis.get(key)
         if fn:
             res = fn(res) 
         return res
 
+    def get_list(self, key: str) -> List:
+        """returns list"""
+        return self._redis.lrange(key, 0, -1)
+
     def get_str(b: bytes) -> str:
         """returns string"""
         return b.decode("utf-8")
 
-    def get_int(b: bytes) -> int:
+    def get_int(b: bytes) -> str:
         """returns int"""
-        return int.from_bytes(b, byteorder='big')
+        return int.from_bytes(b, byteorder)
