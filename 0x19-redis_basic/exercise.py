@@ -12,11 +12,11 @@ class Cache:
 
     def __init__(self):
         """init"""
-        self._redis = redis.Redis()
+        self._redis = redis.Redis(db=0)
         self._redis.flushdb()
 
     def store(self, data: Union[str, float, int, bytes]) -> str:
         """method"""
         id = uuid.uuid1()
         self._redis.set(id.int, data)
-        return data
+        return str(id)
