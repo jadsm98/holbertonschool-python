@@ -6,6 +6,18 @@ import redis
 import uuid
 from sys import byteorder
 from typing import Union, Optional, Callable
+from functools import wraps
+
+
+def count_calls(method: Callable) -> Callable:
+    """decorator"""
+    key = method.__qualname__
+    @wraps(count_calls)
+    def wrapper(*args, **kwds):
+        """wraps"""
+        self._redis.incr(key)
+        return method(*args, **kwds)
+    return wrapper
 
 class Cache:
     """this is a class"""
@@ -15,6 +27,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
+    @count_calls
     def store(self, data: Union[str, int, float, bytes]) -> str:
         """method"""
         val = str(uuid.uuid4())
