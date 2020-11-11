@@ -16,6 +16,7 @@ class LFUCache(BaseCaching):
         """
         Init
         """
+
         super().__init__()
         self.keys = []
         self.uses = {}
@@ -43,6 +44,7 @@ class LFUCache(BaseCaching):
         """
         Get method
         """
+
         if key is not None and key in self.cache_data:
             self.keys.append(self.keys.pop(self.keys.index(key)))
             self.uses[key] += 1
@@ -50,7 +52,9 @@ class LFUCache(BaseCaching):
         return None
 
     def findLFU(self):
-        """ Find the LFU key """
+        """ 
+        Find the LFU key 
+        """
 
         items = list(self.uses.items())
         freqs = [item[1] for item in items]
