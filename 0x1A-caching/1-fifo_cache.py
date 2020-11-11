@@ -34,7 +34,7 @@ class FIFOCache(BaseCaching):
         """
         self.nextout += 1
         result = self.data.get(self.nextout)
-        del self.cache_data[self.data.get(self.nextout)]
+        del self.cache_data[result]
         del self.data[self.nextout]
         print('DISCARD: {}'.format(result))
 
@@ -44,8 +44,9 @@ class FIFOCache(BaseCaching):
         """
 
         if key is not None or item is not None:
+            if key not in self.cache_data:
+                self.append(key)
             self.cache_data[key] = item
-            self.append(key)
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
                 self.pop()
 
