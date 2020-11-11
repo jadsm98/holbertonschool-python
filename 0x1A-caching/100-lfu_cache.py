@@ -27,10 +27,10 @@ class LFUCache(BaseCaching):
         """
 
         if key is not None and item is not None:
-            if len(self.keys) == BaseCaching.MAX_ITEMS and
+            if len(self.keys) == BaseCaching.MAX_ITEMS and \
                     key not in self.keys:
                 rem = self.keys.pop(self.keys.index(self.findLFU()))
-                del self.cache_data[discard], self.uses[discard]
+                del self.cache_data[rem], self.uses[rem]
                 print('DISCARD: {}'.format(rem))
             self.cache_data[key] = item
             if key not in self.keys:
@@ -44,7 +44,6 @@ class LFUCache(BaseCaching):
         """
         Get method
         """
-
         if key is not None and key in self.cache_data:
             self.keys.append(self.keys.pop(self.keys.index(key)))
             self.uses[key] += 1
@@ -52,8 +51,8 @@ class LFUCache(BaseCaching):
         return None
 
     def findLFU(self):
-        """ 
-        Find the LFU key 
+        """
+        Find the LFU key
         """
 
         items = list(self.uses.items())
