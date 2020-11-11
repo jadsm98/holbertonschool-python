@@ -1,38 +1,36 @@
 #!/usr/bin/python3
-""" Module"""
 
-hot_l = []
+'''
+count words
+'''
+
+from collections import Counter, defaultdict
+import re
+import requests
 
 
-def count_words(subreddit, word_list, count=0, after=None):
-    """function"""
-
-    import requests, collections
-
-    sub_info = requests.get("https://www.reddit.com/r/{}/hot.json"
-                            .format(subreddit),
-                            params={"count": count, "after": after},
-                            headers={"User-Agent": "My-User-Agent"},
-                            allow_redirects=False)
-    if sub_info.status_code >= 300:
+def count_words(subreddit, word_list, res=defaultdict(int), after=None):
+    ''' count words in a subreddit '''
+    agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6)\
+            AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132i\
+            Safari/537.36"
+    headers = {"User-Agent": agent}
+    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
+    if after:
+        url += '?after={}'.format(after)
+    try:
+        r = requests.get(url, headers=headers, allow_redirects=False).json()
+        titles = r.get('data').get('children')
+        for t in titles:
+            c = Counter(t.get('data').get('title').lower().split(' '))
+            for word in word_list:
+                if word.lower() in c:
+                    res[word] += c.get(word.lower())
+        after = r.get('data').get('after')
+        if after:
+            return count_words(subreddit, word_list, res, after)
+        first_sort = sorted(res.items(), key=lambda x: x[0])
+        for k, v in sorted(first_sort, key=lambda x: x[1], reverse=True):
+            print('{}: {}'.format(k, v))
+    except:
         return
-
-    for child in sub_info.json().get("data").get("children"):
-        for i in word_list:
-            if i in child.get("data").get("title").split(' ') or \
-                    i.capitalize() in child.get("data").get("title").split(' '):
-
-                for j in range(child.get("data").get("title").split(' ').count(i) + 
-                               child.get("data").get("title").split(' ').count(i.capitalize())):
-                    hot_l.append(i)
-
-    info = sub_info.json()
-    if not info.get("data").get("after"):
-        r = collections.Counter(hot_l).most_common()
-        for i in r:
-            if i[1] != 0:
-                print('{}: {}'.format(i[0], i[1]))
-        return
-
-    return count_words(subreddit, word_list, info.get("data").get("count"),
-                       info.get("data").get("after"))
