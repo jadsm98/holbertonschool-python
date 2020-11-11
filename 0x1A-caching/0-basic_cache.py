@@ -4,13 +4,14 @@ Basic_caching module
 """
 
 
-BaseCaching = __import__('base_caching').BaseCaching
+from base_caching import BaseCaching
 
 
 class BasicCache(BaseCaching):
     """
     Basic class
     """
+
     
     def put(self, key, item):
         """
@@ -21,6 +22,7 @@ class BasicCache(BaseCaching):
             pass
         else:
             self.cache_data[key] = item
+
 
     def get(self, key):
         """
