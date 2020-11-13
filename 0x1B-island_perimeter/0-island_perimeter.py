@@ -5,6 +5,10 @@ Module
 
 
 def island_perimeter(grid):
+    """
+    function
+    """
+
     N = len(grid)
     M = len(grid[0])
         
@@ -13,7 +17,7 @@ def island_perimeter(grid):
             return 1
         if grid[r][c] == 1:
             grid[r][c] = 2
-            return dfs(r-1, c) + dfs( r+1, c) +dfs(r, c-1)+ dfs(r, c+1) 
+            return dfs(r - 1, c) + dfs( r + 1, c) +dfs(r, c - 1)+ dfs(r, c + 1) 
         return 0
         
     perimeter = 0
