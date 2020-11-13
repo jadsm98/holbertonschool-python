@@ -5,26 +5,20 @@ Module
 
 
 def island_perimeter(grid):
-    """
-    Function to return the perimeter
-    of an island
-    """
-    if len(grid) > 100 or any(len(i) for i in grid) > 100:
-        return
-
-    perim = 0
-    for i, v in enumerate(grid):
-        for j in range(len(v)):
-            if grid[0][j] != 0 or grid[i][0] != 0 \
-               or grid[-1][j] != 0 or grid[i][-1] != 0:
-                return
-            if grid[i][j] == 1:
-                if grid[i - 1][j] == 0:
-                    perim += 1
-                if grid[i + 1][j] == 0:
-                    perim += 1
-                if grid[i][j - 1] == 0:
-                    perim += 1
-                if grid[i][j + 1] == 0:
-                    perim += 1
-    return perim
+    N = len(grid)
+    M = len(grid[0])
+        
+    def dfs(r, c):
+        if r < 0 or r >= N or c < 0 or c >= M or grid[r][c] == 0:
+            return 1
+        if grid[r][c] == 1:
+            grid[r][c] = 2
+            return dfs(r-1, c) + dfs( r+1, c) +dfs(r, c-1)+ dfs(r, c+1) 
+        return 0
+        
+    perimeter = 0
+    for r in range(N):
+        for c in range(M):
+            if grid[r][c] == 1:
+                perimeter += dfs(r, c)
+    return perimeter
