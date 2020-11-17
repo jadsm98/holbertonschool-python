@@ -6,8 +6,9 @@ module
 
 from parameterized import parameterized
 from utils import access_nested_map, get_json
-import unittest
+from unittest.mock import Mock
 import requests
+import unittest
 
 
 class TestAccessNestedMap(unittest.TestCase):
