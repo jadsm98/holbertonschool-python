@@ -5,9 +5,8 @@ module
 
 
 from parameterized import parameterized
-from utils import access_nested_map, get_json
-from unittest.mock import Mock
-import requests
+from utils import access_nested_map, get_json, memoize
+from unittest.mock import Mock, patch
 import unittest
 
 
@@ -83,9 +82,9 @@ class TestMemoize(unittest.TestCase):
 
                 return self.a_method()
 
-        with unittest.mock.patch.object(TestClass, 'a_method', return_value=42) as mock_a_method:
-            TestClass.a_property()
-            TestClass.a_property()
+        with patch.object(TestClass, 'a_method', return_value=42) as mock_a_method:
+            TestClass().a_property
+            TestClass().a_property
 
-            self.assertEqual(TestClass.a_property(), 42)
+            self.assertEqual(TestClass().a_property, 42)
             mock_a_method.assert_called_once()
