@@ -23,4 +23,4 @@ class TestAccessNestedMap(unittest.TestCase):
         """
         Test case
         """
-        self.assertEqual(access_nested_map(in1, in2, out))
+        self.assertEqual(self.access_nested_map(in1, in2), out)
