@@ -4,7 +4,7 @@ module
 """
 
 
-from parametrized import parametrized
+from parameterized import parameterized
 from utils import access_nested_map
 import unittest
 
@@ -14,7 +14,7 @@ class TestAccessNestedMap(unittest.TestCase):
     unit testing for access_nested_map function
     """
 
-    @parametrized.expand([
+    @parameterized.expand([
         ({"a": 1}, ("a",), 1), 
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2)
