@@ -33,4 +33,5 @@ class TestAccessNestedMap(unittest.TestCase):
         """
         test case for exception
         """
-        self.assertRaises(access_nested_map(in1, in2), exception)
+        with self.assertRaises(exception):
+            access_nested_map(in1, in2)
