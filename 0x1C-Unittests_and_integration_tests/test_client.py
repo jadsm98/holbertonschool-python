@@ -6,6 +6,9 @@ module
 from parameterized import parameterized
 from unittest.mock import Mock, patch, PropertyMock
 import unittest
+from urllib.error import HTTPError
+import requests
+from client import GithubOrgClient
 
 
 class TestGithubOrgClient(unittest.TestCase):
