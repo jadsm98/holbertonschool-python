@@ -2,20 +2,18 @@
 """module"""
 
 
-if __name__ == '__main__':
+import requests
+from sys import argv
 
-    import requests
-    import sys
-
-    if len(sys.argv) == 1:
-        res = {'q': ""}
+if __name__ == "__main__":
+    data = {'q': ""}
+    if len(argv) > 1:
+        data['q'] = argv[1]
+    r = requests.post("http://0.0.0.0:5000/search_user", data)
+    if "json" not in r.headers.get('content-type'):
+        print("Not a valid JSON")
     else:
-        res = {'q': sys.argv[1]}
-    r = requests.post('http://0.0.0.0:5000/search_user', data=res)
-    try:
-        if r.json() == '{}':
-            print ('No result')
+        if r.json():
+            print("[{}] {}".format(r.json().get('id'), r.json().get('name')))
         else:
-            print('[{}] {}'.format(dict(r.json()).get('id'), dict(r.json()).get('                               name')))
-    except ValueError:
-        print('Not a valid JSON')
+            print("No result")
