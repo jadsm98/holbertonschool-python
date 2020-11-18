@@ -40,19 +40,18 @@ class TestGithubOrgClient(unittest.TestCase):
             self.assertEqual(client._public_repos_url, mock_org.return_value.get('repos_url'))
             mock_org.assert_called_once()
 
-    @patch('get_json', return_value=[{'name': 'google'}])
-    def test_public_repos(self, mock_org):
-        """
-        test method
-        """
-
-        with patch.object(GithubOrgClient, '_public_repos_url', new_callable=PropertyMock) as mock_get:
-            mock_get.return_value = 'https://github.com/google'
-            test = GithubOrgClient('google')
-            ret = test.public_repos()
-            self.assertEqual(ret, ['google'])
-            mock_org.assert_called_once()
-            mock_get.assert_called_once()
+    @patch("client.get_json", return_value=[{"name": "twitter"}])
+    def test_public_repos(self, mock_get):
+        """test GithubOrgClient.public_repos"""
+        with patch.object(GithubOrgClient,
+                          "_public_repos_url",
+                          new_callable=PropertyMock,
+                          return_value="https://api.github.com/") as mock_pub:
+            test_client = GithubOrgClient("twitter")
+            test_return = test_client.public_repos()
+            self.assertEqual(test_return, ["twitter"])
+            mock_get.assert_called_once
+            mock_pub.assert_called_once
 
     @parameterized.expand([
         ({"license": {"key": "my_license"}}, "my_license", True),
